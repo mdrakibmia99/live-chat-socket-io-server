@@ -6,7 +6,7 @@ const expressServer = http.createServer(app);
 app.use(cors())
 const { Server } = require("socket.io");
 const io = new Server(expressServer,{
-    cors:{
+cors:{
         origin:"http://localhost:3000"
     }
 
@@ -16,11 +16,16 @@ const io = new Server(expressServer,{
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+  // join a room
  socket.on('join_room',(data)=>{
     socket.join(data);
     console.log(`join room id:${socket.id} and room=${data}`)
  })
 
+//   send data form client site 
+ socket.on('send_message',(data)=>{
+   socket.to(data.roomId).emit('receive_message',data)
+ })
   socket.on('disconnect',()=>{
      console.log('user disconnected')
   })
