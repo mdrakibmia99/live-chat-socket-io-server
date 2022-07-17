@@ -7,7 +7,7 @@ app.use(cors())
 const { Server } = require("socket.io");
 const io = new Server(expressServer,{
 cors:{
-        origin:"http://localhost:3000"
+        origin:"https://live-chat-socket-io.netlify.app"
     }
 
 });
