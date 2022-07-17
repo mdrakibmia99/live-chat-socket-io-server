@@ -16,6 +16,11 @@ const io = new Server(expressServer,{
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+ socket.on('join_room',(data)=>{
+    socket.join(data);
+    console.log(`join room id:${socket.id} and room=${data}`)
+ })
+
   socket.on('disconnect',()=>{
      console.log('user disconnected')
   })
