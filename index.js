@@ -4,6 +4,7 @@ const http = require('http');
 const cors=require('cors')
 const expressServer = http.createServer(app);
 app.use(cors())
+const Port=process.env.PORT || 5000;
 const { Server } = require("socket.io");
 const io = new Server(expressServer,{
 cors:{
@@ -12,9 +13,9 @@ cors:{
 
 });
 
-app.get('/',()=>{
-  <h1> live is running</h1>
-})
+app.get('/', (req, res) => {
+  res.send('<h1>Live Chat server is running</h1>');
+});
 
 io.on('connection', (socket) => {
   console.log('a user connected');
@@ -33,6 +34,6 @@ io.on('connection', (socket) => {
   })
 });
 
-expressServer.listen(5000, () => {
-  console.log('listening on @5000');
+expressServer.listen(Port, () => {
+  console.log(`listening on @ ${Port}`);
 });
