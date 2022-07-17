@@ -3,13 +3,14 @@ const app = express();
 const http = require('http');
 const cors=require('cors')
 const expressServer = http.createServer(app);
-require('dotenv').config()
+// require('dotenv').config()
 app.use(cors())
 const Port=process.env.PORT || 5000;
 const { Server } = require("socket.io");
 const io = new Server(expressServer,{
 cors:{
-        origin:"https://live-chat-socket-io.netlify.app"
+        // origin:"https://live-chat-socket-io.netlify.app"
+        origin:"*"
     }
 
 });
