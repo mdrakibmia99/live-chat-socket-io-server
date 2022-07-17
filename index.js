@@ -12,7 +12,9 @@ cors:{
 
 });
 
-
+app.get('/',()=>{
+  <h1> live is running</h1>
+})
 
 io.on('connection', (socket) => {
   console.log('a user connected');
