@@ -14,7 +14,7 @@ const io = new Server(expressServer, {
 });
 
 app.get('/', (req, res) => {
-  res.send('<h1>Live Chat server is running....</h1>');
+  res.send('<h1>Live Chat server is running..ok..</h1>');
 });
 
 io.on('connection', (socket) => {
