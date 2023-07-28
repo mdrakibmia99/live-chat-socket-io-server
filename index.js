@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   console.log('a user connected');
+
   // join a room
   socket.on('join_room', (data) => {
     socket.join(data);
