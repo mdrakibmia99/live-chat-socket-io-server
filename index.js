@@ -8,7 +8,8 @@ const Port=process.env.PORT || 5000;
 const { Server } = require("socket.io");
 const io = new Server(expressServer,{
 cors:{
-        origin:"*"
+        // origin:"*"
+        origin: "http://localhost:3000",
     }
 
 });
